@@ -19,8 +19,6 @@ jobs:
           apt install -y poppler-utils
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
-      - name: Setup GitHub CLI
-        uses: cli/cli-action@v2
       - name: Generate main.png
         run: |
           echo "Current time: $(date)"
