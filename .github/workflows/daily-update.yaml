@@ -15,8 +15,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup pdftoppm
         run: |
-          apt update
-          apt install -y poppler-utils
+          sudo apt update
+          sudo apt install -y poppler-utils
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
       - name: Generate main.png
