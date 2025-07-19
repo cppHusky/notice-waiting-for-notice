@@ -13,15 +13,16 @@
   size:21pt,
   align(center)[通知]
 )
-//#v(10mm)
 #set text(
   font:("FangSong_GB2312","Times New Roman"),
   size:16pt,
 )
-#h(-2em)各位老师、同学：
+#let noindent=h(-2em)
+
+#noindent 各位老师、同学：
 
 等通知。
 
-#h(-2em)特此通知
+#noindent 特此通知
 
 #align(right)[#datetime.today().display("[year]年[month]月[day]日")#h(1em)]
