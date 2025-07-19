@@ -1,6 +1,6 @@
 #set page(
   background:image("background.png"),
-  margin:(top:37mm+6mm,bottom:35mm,x:28mm),
+  margin:(top:37mm,bottom:35mm,x:28mm),
 )
 #set par(
   first-line-indent:(amount:2em,all:true)
