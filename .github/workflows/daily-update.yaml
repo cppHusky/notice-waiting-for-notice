@@ -1,0 +1,31 @@
+name: Daily update
+on:
+  schedule:
+  - cron: '0 16 * * *'
+  push:
+    branches:
+      - 'master'
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup environment
+        run: |
+          apt update
+          apt install -y poppler-utils
+        uses: |
+          typst-community/setup-typst@v4
+          cli/cli-action@v2
+      - name: Generate main.png
+        run: make
+      - name: Update main.png to "today" release
+        run: |
+          set -e
+          RELEASE_ID=$(gh release view today --json databaseId -q .databaseId || echo "")
+          if [[ -z "${RELEASE_ID} ]]; then
+            gh release create today --title "Daily Release" --notes "Daily release for main.png" --prerelease
+            RELEASE_ID=$(gh release view today --json databaseId -q .databaseId)
+          fi
+          gh release upload today main.png --clobber
