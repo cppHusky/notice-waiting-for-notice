@@ -8,23 +8,28 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Setup environment
+      - name: Setup pdftoppm
         run: |
           apt update
           apt install -y poppler-utils
-        uses: |
-          typst-community/setup-typst@v4
-          cli/cli-action@v2
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+      - name: Setup GitHub CLI
+        uses: cli/cli-action@v2
       - name: Generate main.png
-        run: make
+        run: |
+          echo "Current time: $(date)"
+          make
       - name: Update main.png to "today" release
         run: |
           set -e
           RELEASE_ID=$(gh release view today --json databaseId -q .databaseId || echo "")
-          if [[ -z "${RELEASE_ID} ]]; then
+          if [[ -z "${RELEASE_ID}" ]]; then
             gh release create today --title "Daily Release" --notes "Daily release for main.png" --prerelease
             RELEASE_ID=$(gh release view today --json databaseId -q .databaseId)
           fi
