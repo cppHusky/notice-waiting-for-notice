@@ -30,7 +30,6 @@ jobs:
           make
       - name: Update main.png to "today" release
         run: |
-          set -e
           RELEASE_ID=$(gh release view today --json databaseId -q .databaseId || echo "")
           if [[ -z "${RELEASE_ID}" ]]; then
             gh release create today --title "Daily Release" --notes "Daily release for main.png" --prerelease
