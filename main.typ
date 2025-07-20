@@ -14,7 +14,10 @@
   align(center)[通知]
 )
 #set text(
-  font:("FangSong_GB2312","Times New Roman"),
+  font:(
+    (name:"FangSong_GB2312",covers:"latin-in-cjk"),
+    "Times New Roman",
+  ),
   size:16pt,
 )
 #let noindent=h(-2em)

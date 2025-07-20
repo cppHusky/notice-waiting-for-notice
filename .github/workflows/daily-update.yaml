@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Shanghai
+      GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,6 +20,10 @@ jobs:
           sudo apt install -y poppler-utils
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
+      - name: Setup Fonts
+        run: |
+          mv fonts/* /usr/share/fonts/
+          fc-cache -fv
       - name: Generate main.png
         run: |
           echo "Current time: $(date)"
