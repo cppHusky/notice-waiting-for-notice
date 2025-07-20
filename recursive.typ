@@ -24,7 +24,7 @@
 
 #noindent 各位老师、同学：
 
-等通知。
+#align(center,image("recursive.png",height:115mm))
 
 #noindent 特此通知
 

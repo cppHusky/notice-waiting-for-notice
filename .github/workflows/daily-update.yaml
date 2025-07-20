@@ -25,9 +25,8 @@ jobs:
         run: |
           mv fonts/* /usr/share/fonts/
           fc-cache -fv
-      - name: Generate main.png
+      - name: Generate main.png and recursive.png
         run: |
-          echo "Current time: $(date)"
           make
       - name: Update main.png to "today" release
         run: |
@@ -36,4 +35,4 @@ jobs:
             gh release create today --title "Daily Release" --notes "Daily release for main.png" --prerelease
             RELEASE_ID=$(gh release view today --json databaseId -q .databaseId)
           fi
-          gh release upload today main.png --clobber
+          gh release upload today main.png recursive.png --clobber
