@@ -15,24 +15,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Setup pdftoppm
-        run: |
-          sudo apt update
-          sudo apt install -y poppler-utils
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
-      - name: Setup Fonts
-        run: |
-          mv fonts/* /usr/share/fonts/
-          fc-cache -fv
-      - name: Generate main.png and recursive.png
+      - name: Generate *.png
         run: |
           make
-      - name: Update main.png to "today" release
+      - name: Update *.png to "today" release
         run: |
           RELEASE_ID=$(gh release view today --json databaseId -q .databaseId || echo "")
           if [[ -z "${RELEASE_ID}" ]]; then
-            gh release create today --title "Daily Release" --notes "Daily release for main.png" --prerelease
+            gh release create today --title "Daily Release" --prerelease
             RELEASE_ID=$(gh release view today --json databaseId -q .databaseId)
           fi
-          gh release upload today main.png recursive.png --clobber
+          gh release upload today classic.png recursive.png emperor.png --clobber

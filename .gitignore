@@ -1,3 +1,2 @@
-background.png
-main.png
-recursive.png
+*.png
+!background.png
