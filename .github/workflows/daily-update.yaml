@@ -18,7 +18,7 @@ jobs:
       - name: Install faketime
         run: |
           sudo apt update
-          sudo apt install -y libfaketime
+          sudo apt install -y faketime
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
       - name: Generate *.png
