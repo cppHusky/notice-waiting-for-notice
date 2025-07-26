@@ -22,10 +22,6 @@
 )
 #let noindent=h(-2em)
 
-#noindent 各位老师、同学：
-
-#align(center,image("recursive.png",height:115mm))
-
-#noindent 特此通知
+#align(center,image("recursive.png",height:150mm))
 
 #align(right)[#datetime.today().display("[year]年[month]月[day]日")#h(1em)]
