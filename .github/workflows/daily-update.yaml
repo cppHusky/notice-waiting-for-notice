@@ -15,10 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install faketime
-        run: |
-          sudo apt update
-          sudo apt install -y faketime
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
       - name: Generate *.png

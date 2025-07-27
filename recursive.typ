@@ -21,7 +21,7 @@
 	size:16pt,
 )
 #let noindent=h(-2em)
-
+#let dateadd=duration(days:int(sys.inputs.dateadd))
 #align(center,image("recursive.png",height:150mm))
 
-#align(right)[#datetime.today().display("[year]年[month]月[day]日")#h(1em)]
+#align(right)[#(datetime.today()+dateadd).display("[year]年[month]月[day]日")#h(1em)]
