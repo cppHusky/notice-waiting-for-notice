@@ -17,14 +17,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
-      - name: Generate *.png
+      - name: Generate BUPT/*.png
         run: |
-          make
-      - name: Update *.png to "today" release
+          make -C BUPT
+      - name: Update BUPT/*.png to "today" release
         run: |
           RELEASE_ID=$(gh release view today --json databaseId -q .databaseId || echo "")
           if [[ -z "${RELEASE_ID}" ]]; then
             gh release create today --title "Daily Release" --prerelease
             RELEASE_ID=$(gh release view today --json databaseId -q .databaseId)
           fi
-          gh release upload today classic.png recursive.png emperor.png --clobber
+          gh release upload today BUPT/classic.png BUPT/recursive.png BUPT/emperor.png --clobber
