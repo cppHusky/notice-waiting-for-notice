@@ -1,10 +1,7 @@
 # 通知：等通知
 
-效果预览：
-
-|北邮版|北师大版|
-|---|---|
-|![BUPT classic](https://github.com/cppHusky/notice-waiting-for-notice/releases/download/BUPT/classic.png)|![BNU classic](https://github.com/cppHusky/notice-waiting-for-notice/releases/download/BNU/classic.png)|
+- [北邮版](https://github.com/cppHusky/notice-waiting-for-notice/releases/tag/BUPT)
+- [北师大版](https://github.com/cppHusky/notice-waiting-for-notice/releases/tag/BNU)
 
 ## 如何编辑
 
